@@ -16,8 +16,8 @@ $autos = [
 // Funciones de filtrado/búsqueda
 function normalizar($texto) {
     $texto = mb_strtolower(trim($texto));
-    $texto = iconv('UTF-8', 'ASCII//TRANSLIT', $texto); // quita acentos
-    $texto = preg_replace('/[^a-z0-9]/', '', $texto); // quita espacios, guiones, etc.
+    $texto = iconv('UTF-8', 'ASCII//TRANSLIT', $texto); 
+    $texto = preg_replace('/[^a-z0-9]/', '', $texto); 
     return $texto;
 }
 
@@ -53,7 +53,7 @@ if (isset($_GET['busqueda']) && $_GET['busqueda'] !== '') {
     $filtrosAplicados['busqueda'] = "Búsqueda: '" . htmlspecialchars($busqueda) . "'";
 }
 
-// URL base (archivo actual)
+
 $self = htmlspecialchars($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
@@ -75,7 +75,6 @@ $self = htmlspecialchars($_SERVER['PHP_SELF']);
         <label for="precio_max">Precio máximo:</label>
         <input type="number" name="precio_max" id="precio_max" value="<?php echo isset($_GET['precio_max']) ? htmlspecialchars($_GET['precio_max']) : ''; ?>">
         <button type="submit">Filtrar</button>
-        <button type="button" onclick="window.location.href='<?= $self ?>'">Reset</button>
     </form>
 
     <!--Buscador por texto -->
@@ -83,8 +82,12 @@ $self = htmlspecialchars($_SERVER['PHP_SELF']);
         <label for="busqueda">Marca o modelo:</label>
         <input type="text" name="busqueda" id="busqueda" value="<?php echo isset($_GET['busqueda']) ? htmlspecialchars($_GET['busqueda']) : ''; ?>">
         <button type="submit">Buscar</button>
-        <button type="button" onclick="window.location.href='<?= $self ?>'">Reset</button>
     </form>
+
+    <!-- Botón Reset único -->
+    <div class="reset-container">
+        <button type="button" class="reset-btn" onclick="window.location.href='<?= $self ?>'">Reset</button>
+    </div>
 
     <!-- Mostrar filtros aplicados -->
     <div class="filtros-aplicados">
@@ -132,3 +135,4 @@ $self = htmlspecialchars($_SERVER['PHP_SELF']);
     <?php endif; ?>
 </body>
 </html>
+
