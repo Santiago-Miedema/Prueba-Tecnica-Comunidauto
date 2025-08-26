@@ -84,7 +84,7 @@ $self = htmlspecialchars($_SERVER['PHP_SELF']);
         <button type="submit">Buscar</button>
     </form>
 
-    <!-- Botón Reset único -->
+    
     <div class="reset-container">
         <button type="button" class="reset-btn" onclick="window.location.href='<?= $self ?>'">Reset</button>
     </div>
